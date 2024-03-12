@@ -37,6 +37,7 @@ async (req,res) =>{ // crear un producto
 
 router.patch('/:id',
 /*los middleware son secuenciles por eso se puede poner uno tras otro */
+
 validetorHandler(getProductsSchemas,'params'),// middleware validador de schemas id
 validetorHandler(upDateProductsSchemas,'body'),// middleware validador de schemas body
 async (req,res,next)=>{ // actualizar un producto

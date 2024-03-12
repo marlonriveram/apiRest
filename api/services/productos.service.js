@@ -23,7 +23,8 @@ class ProductsService{
   async create(data){
     const newProduct = {
       id:faker.string.uuid(),
-      ...data
+      ...data,
+      isBlock:faker.datatype.boolean(),
     };
     this.products.push(newProduct);
     return newProduct;
@@ -38,7 +39,7 @@ class ProductsService{
     if(!product){
      throw boom.notFound(' produt not found');
     // throw new Error ('no esta el producto');
-    }if(product.isBlock) {
+    }if(!product.isBlock) {
       throw boom.conflict('product is block');
     }
     return product;
