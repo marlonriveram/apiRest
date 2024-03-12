@@ -13,17 +13,17 @@ app.use(express.json());// nos permite recibir informacion enviado en el body co
 
 
 
-const whitelist = ['https://api-rest-z414pk4kp-marlon-mosqueras-projects.vercel.app/']
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions));
+// const whitelist = ['https://api-rest-z414pk4kp-marlon-mosqueras-projects.vercel.app/']
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
+app.use(cors());
 
 routerApi(app); // Funcion Manejadora de Rutas
 app.get('/',(req,res)=>{
