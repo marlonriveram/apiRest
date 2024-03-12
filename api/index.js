@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000; // puerto por donde se realiza la peticio
 app.use(express.json());// nos permite recibir informacion enviado en el body con el metodo post
 
 
-const whitelist = ['http://localhost:5500', 'http://localhost:3000/']
+const whitelist = ['http://localhost:5500']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
