@@ -23,10 +23,10 @@ const corsOptions = {
     }
   }
 }
-// app.use(cors());
+app.use(cors(corsOptions));
 
-// routerApi(app); // Funcion Manejadora de Rutas
-app.get('/',cors(corsOptions),(req,res)=>{
+routerApi(app); // Funcion Manejadora de Rutas
+app.get('/',(req,res)=>{
   res.json({
     saludo:'Hola mi api en express'
   });
