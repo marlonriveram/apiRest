@@ -12,7 +12,8 @@ const port = process.env.PORT || 3000; // puerto por donde se realiza la peticio
 app.use(express.json());// nos permite recibir informacion enviado en el body con el metodo post
 
 
-const whitelist = ['http://localhost:5500','https://api-rest-1yar2hta4-marlon-mosqueras-projects.vercel.app']
+
+const whitelist = ['https://api-rest-z414pk4kp-marlon-mosqueras-projects.vercel.app/']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -22,18 +23,20 @@ const corsOptions = {
     }
   }
 }
-app.use(cors(corsOptions));
+// app.use(cors());
 
-routerApi(app); // Funcion Manejadora de Rutas
-app.get('/',(req,res)=>{
-  res.send('Hola mi api en express');
+// routerApi(app); // Funcion Manejadora de Rutas
+app.get('/',cors(corsOptions),(req,res)=>{
+  res.json({
+    saludo:'Hola mi api en express'
+  });
 })
 
 // middelwares
-app.use(logError);
-app.use(boomErrorHandler);
-app.use(errorHandler);
-
+// app.use(logError);
+// app.use(boomErrorHandler);
+// app.use(errorHandler);
+// console.log()
 app.listen(port,()=>{ // app.listen el puerto donde se va estar escuchando el cliente
   console.log('mi port: ' + port);
 });
